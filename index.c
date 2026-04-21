@@ -283,6 +283,8 @@ int index_save(const Index *index) {
 //   - index_find                       : checking if the file is already staged
 //
 // Returns 0 on success, -1 on error.
+// Stage a regular file by writing its blob and recording its metadata.
+
 int index_add(Index *index, const char *path) {
     if (!index || !path) {
         return -1;
