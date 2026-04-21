@@ -139,6 +139,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
         free(full_object);
         return 0;
     }
+// Derive the sharded object path from the computed hash.
 
     char final_path[512];
     object_path(&id, final_path, sizeof(final_path));
