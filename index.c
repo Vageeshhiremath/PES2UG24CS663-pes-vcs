@@ -211,6 +211,8 @@ static int compare_index_entries(const void *a, const void *b) {
 //   - rename                           : atomically moving the temp file over the old index
 //
 // Returns 0 on success, -1 on error.
+// Save the index through a temporary file before atomically renaming it.
+
 int index_save(const Index *index) {
     if (!index) {
         return -1;
