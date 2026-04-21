@@ -141,6 +141,7 @@ static int tree_has_entry(const Tree *tree, const char *name) {
     }
     return 0;
 }
+// A slash means this entry belongs to a subtree below the current level.
 
 static int write_tree_level(const Index *index, const char *prefix, ObjectID *id_out) {
     Tree tree;
