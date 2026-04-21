@@ -113,6 +113,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
         default:
             return -1;
     }
+// Build the object header in the same format used for hashing and storage.
 
     char header[64];
     int header_len = snprintf(header, sizeof(header), "%s %zu", type_str, len);
