@@ -220,6 +220,7 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
 
     void *data = NULL;
     size_t len = 0;
+// Serialize commit metadata and message before writing the commit object.
 
     if (commit_serialize(&commit, &data, &len) != 0) {
         return -1;
