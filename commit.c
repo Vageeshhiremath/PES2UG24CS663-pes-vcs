@@ -201,6 +201,7 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
 
     Commit commit;
     memset(&commit, 0, sizeof(commit));
+// Create the root tree object from the current staged index.
 
     if (tree_from_index(&commit.tree) != 0) {
         return -1;
