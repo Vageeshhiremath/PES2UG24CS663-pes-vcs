@@ -271,6 +271,7 @@ int object_read(const ObjectID *id, ObjectType *type_out, void **data_out, size_
         free(buffer);
         return -1;
     }
+// Recompute the object hash to detect corrupted or tampered object files.
 
     ObjectID actual_id;
     compute_hash(buffer, (size_t)file_size, &actual_id);
