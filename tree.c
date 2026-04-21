@@ -131,6 +131,7 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 //
 // Returns 0 on success, -1 on error.
 int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out);
+// Recursively build one tree object for each directory level in the index.
 
 static int tree_has_entry(const Tree *tree, const char *name) {
     for (int i = 0; i < tree->count; i++) {
