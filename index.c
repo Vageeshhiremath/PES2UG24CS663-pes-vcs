@@ -328,6 +328,7 @@ int index_add(Index *index, const char *path) {
     }
 
     free(buffer);
+// Update an existing staged path, or append a new index entry.
 
     IndexEntry *entry = index_find(index, path);
     if (!entry) {
