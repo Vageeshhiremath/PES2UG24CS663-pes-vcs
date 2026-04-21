@@ -135,7 +135,10 @@ int index_status(const Index *index) {
 //   - fopen (with "r"), fscanf, fclose : reading the text file line by line
 //   - hex_to_hash                      : converting the parsed string to ObjectID
 //
+
 // Returns 0 on success, -1 on error.
+// Load staged entries from the text index file into memory.
+
 int index_load(Index *index) {
     if (!index) {
         return -1;
