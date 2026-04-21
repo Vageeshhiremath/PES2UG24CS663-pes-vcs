@@ -230,6 +230,7 @@ static int write_tree_level(const Index *index, const char *prefix, ObjectID *id
 
     return rc;
 }
+// Build the root tree from the complete staging index.
 
 int tree_from_index(ObjectID *id_out) {
     if (!id_out) {
