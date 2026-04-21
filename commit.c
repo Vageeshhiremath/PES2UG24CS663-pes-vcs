@@ -232,6 +232,7 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
     }
 
     free(data);
+// Move the active branch reference to the newly created commit.
 
     if (head_update(commit_id_out) != 0) {
         return -1;
