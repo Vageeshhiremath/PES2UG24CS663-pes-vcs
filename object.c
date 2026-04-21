@@ -161,6 +161,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
 
     char temp_path[512];
     snprintf(temp_path, sizeof(temp_path), "%s.tmp.%ld", final_path, (long)getpid());
+// Write through a temporary file so rename can publish the object atomically.
 
     int fd = open(temp_path, O_CREAT | O_WRONLY | O_TRUNC, 0644);
     if (fd < 0) {
