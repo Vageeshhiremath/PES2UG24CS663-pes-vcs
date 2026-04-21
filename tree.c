@@ -219,6 +219,7 @@ static int write_tree_level(const Index *index, const char *prefix, ObjectID *id
 
     void *data = NULL;
     size_t len = 0;
+// Serialize the populated tree before storing it as an object.
 
     if (tree_serialize(&tree, &data, &len) != 0) {
         return -1;
