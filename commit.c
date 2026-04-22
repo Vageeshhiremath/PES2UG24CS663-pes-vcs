@@ -198,22 +198,18 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
     if (!message || !commit_id_out) {
         return -1;
     }
-
     Commit commit;
     memset(&commit, 0, sizeof(commit));
 // Create the root tree object from the current staged index.
-
     if (tree_from_index(&commit.tree) != 0) {
         return -1;
     }
 // Use the current HEAD commit as the parent when the repository is not empty.
-
     if (head_read(&commit.parent) == 0) {
         commit.has_parent = 1;
     } else {
         commit.has_parent = 0;
     }
-
     snprintf(commit.author, sizeof(commit.author), "%s", pes_author());
     commit.timestamp = (uint64_t)time(NULL);
     snprintf(commit.message, sizeof(commit.message), "%s", message);
@@ -221,7 +217,6 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
     void *data = NULL;
     size_t len = 0;
 // Serialize commit metadata and message before writing the commit object.
-
     if (commit_serialize(&commit, &data, &len) != 0) {
         return -1;
     }
@@ -230,13 +225,10 @@ int commit_create(const char *message, ObjectID *commit_id_out) {
         free(data);
         return -1;
     }
-
     free(data);
 // Move the active branch reference to the newly created commit.
-
     if (head_update(commit_id_out) != 0) {
         return -1;
     }
-
     return 0;
 }
