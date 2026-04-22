@@ -143,14 +143,11 @@ int index_load(Index *index) {
     if (!index) {
         return -1;
     }
-
     index->count = 0;
-
     FILE *f = fopen(INDEX_FILE, "r");
     if (!f) {
         return 0;
     }
-
     while (index->count < MAX_INDEX_ENTRIES) {
         IndexEntry *entry = &index->entries[index->count];
         char hash_hex[HASH_HEX_SIZE + 1];
@@ -168,7 +165,6 @@ int index_load(Index *index) {
             &size,
             path
         );
-
         if (rc == EOF) {
             break;
         }
